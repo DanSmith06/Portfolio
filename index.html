@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dan Smith — Software Engineer</title>
-<meta name="description" content="Dan Smith. Software engineering degree apprentice working in the UK nuclear sector. Interested in OT/ICS security.">
+<title>Dan Smith, Software Engineer</title>
+<meta name="description" content="Dan Smith. Software engineering degree apprentice in the UK, learning security fundamentals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0f1113;
-    --panel:#15181b;
-    --line:#262b30;
-    --text:#d7dbde;
-    --muted:#828b93;
-    --faint:#565e66;
-    --amber:#e0a13e;
+    --bg:#0c1117;
+    --panel:#111922;
+    --line:#213040;
+    --text:#e8edf1;
+    --muted:#93a1af;
+    --faint:#556472;
+    --teal:#4fe6c4;
+    --amber:#f2b13e;
     --mono:'IBM Plex Mono', ui-monospace, monospace;
     --sans:'Archivo', -apple-system, sans-serif;
   }
@@ -27,161 +28,168 @@
     *,*::before,*::after{animation:none!important;transition:none!important}
   }
   body{
-    background:var(--bg);
+    background-color:var(--bg);
     color:var(--text);
     font-family:var(--sans);
     font-size:16px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     background-image:
+      radial-gradient(900px 520px at 12% -8%, rgba(79,230,196,.12), transparent 60%),
+      radial-gradient(760px 520px at 108% -4%, rgba(242,177,62,.07), transparent 55%);
+    background-attachment:fixed;
+  }
+  /* faded blueprint grid that sits behind everything and dissolves toward the edges */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:
       linear-gradient(var(--line) 1px, transparent 1px),
       linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size:72px 72px;
-    background-position:center top;
+    background-size:80px 80px;
+    opacity:.45;
+    -webkit-mask-image:radial-gradient(130% 95% at 50% 0%, #000 28%, transparent 78%);
+    mask-image:radial-gradient(130% 95% at 50% 0%, #000 28%, transparent 78%);
   }
-  ::selection{background:var(--amber);color:var(--bg)}
+  ::selection{background:var(--teal);color:var(--bg)}
   a{color:var(--text)}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
 
-  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px}
 
   /* ---------- top bar ---------- */
   header{
     border-bottom:1px solid var(--line);
-    background:rgba(15,17,19,.85);
-    backdrop-filter:blur(8px);
+    background:rgba(12,17,23,.72);
+    backdrop-filter:blur(10px);
     position:sticky;top:0;z-index:10;
   }
   .bar{
     display:flex;justify-content:space-between;align-items:center;
-    padding:14px 24px;max-width:860px;margin:0 auto;
-    font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+    padding:14px 24px;max-width:840px;margin:0 auto;
+    font-family:var(--mono);font-size:12px;letter-spacing:.04em;
   }
   .bar .id{color:var(--muted)}
   .bar .id b{color:var(--text);font-weight:500}
   .bar nav a{
-    color:var(--muted);text-decoration:none;margin-left:20px;
-    transition:color .15s;
+    color:var(--muted);text-decoration:none;margin-left:22px;transition:color .15s;
   }
-  .bar nav a:hover{color:var(--amber)}
+  .bar nav a:hover{color:var(--teal)}
 
-  /* ---------- hero / nameplate ---------- */
-  .hero{padding:96px 0 72px}
-  .hero .stamp{
-    font-family:var(--mono);font-size:12px;color:var(--amber);
-    letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;
-  }
+  /* ---------- hero ---------- */
+  .hero{padding:104px 0 76px}
   .hero h1{
     font-weight:900;
-    font-size:clamp(3rem, 9vw, 5.4rem);
-    line-height:.95;
-    letter-spacing:-.03em;
+    font-size:clamp(3.2rem, 10vw, 6rem);
+    line-height:.92;
+    letter-spacing:-.035em;
     text-transform:uppercase;
+    text-shadow:0 0 60px rgba(79,230,196,.18);
   }
-  .hero h1 span{color:var(--faint)}
+  .hero h1 .caret{
+    color:var(--teal);
+    -webkit-text-fill-color:var(--teal);
+  }
   .hero .sub{
-    margin-top:24px;max-width:34em;color:var(--muted);font-size:1.05rem;
+    margin-top:26px;max-width:32em;color:var(--muted);font-size:1.08rem;
   }
+  .hero .sub b{color:var(--text);font-weight:500}
+
   .plate{
     margin-top:48px;
     border:1px solid var(--line);
-    background:var(--panel);
+    background:linear-gradient(180deg, rgba(255,255,255,.02), transparent);
     font-family:var(--mono);font-size:13px;
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    display:grid;grid-template-columns:repeat(4, 1fr);
   }
-  .plate div{
-    padding:14px 16px;
-    border-right:1px solid var(--line);
-  }
+  .plate div{padding:15px 16px;border-right:1px solid var(--line)}
   .plate div:last-child{border-right:none}
-  .plate dt{color:var(--faint);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+  .plate dt{color:var(--faint);font-size:12px;margin-bottom:5px}
   .plate dd{color:var(--text)}
 
   /* ---------- sections ---------- */
-  section{padding:64px 0;border-top:1px solid var(--line)}
+  section{padding:60px 0;border-top:1px solid var(--line)}
   .label{
-    font-family:var(--mono);font-size:12px;color:var(--amber);
-    letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px;
+    display:flex;align-items:center;gap:12px;
+    font-size:.82rem;color:var(--muted);letter-spacing:.01em;margin-bottom:26px;
   }
-  .label::before{content:"// ";color:var(--faint)}
-  p.body{color:var(--muted);max-width:38em}
-  p.body + p.body{margin-top:1em}
-  p.body strong{color:var(--text);font-weight:500}
+  .label::before{content:"";width:22px;height:2px;background:var(--teal);flex-shrink:0}
 
-  /* ---------- focus grid ---------- */
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-  .cell{background:var(--panel);padding:24px}
-  .cell h3{font-size:1rem;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
-  .cell p{color:var(--muted);font-size:.92rem}
-  .cell .tag{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em;display:block;margin-bottom:12px}
+  /* ---------- focus (definition rows, not a sequence, so no numbering) ---------- */
+  .focus{border:1px solid var(--line)}
+  .focus .row{
+    display:grid;grid-template-columns:200px 1fr;gap:24px;
+    padding:20px 22px;border-bottom:1px solid var(--line);
+  }
+  .focus .row:last-child{border-bottom:none}
+  .focus h3{font-size:1.02rem;font-weight:700;letter-spacing:-.01em}
+  .focus p{color:var(--muted);font-size:.95rem}
 
   /* ---------- project ---------- */
   .project{
-    border:1px solid var(--line);background:var(--panel);padding:28px;
+    border:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(79,230,196,.04), transparent 40%);
+    padding:28px;
   }
-  .project h3{font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
-  .project .status{
-    font-family:var(--mono);font-size:11px;color:var(--amber);
-    letter-spacing:.1em;text-transform:uppercase;
-  }
-  .project header2{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
   .project .head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:12px}
-  .project p{color:var(--muted);max-width:40em}
+  .project h3{font-size:1.35rem;font-weight:900;letter-spacing:-.015em}
+  .project .status{
+    font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.06em;
+  }
+  .project p{color:var(--muted);max-width:42em}
   .pipeline{
     margin-top:20px;font-family:var(--mono);font-size:12px;color:var(--faint);
-    letter-spacing:.02em;overflow-x:auto;white-space:nowrap;padding-bottom:4px;
+    overflow-x:auto;white-space:nowrap;padding-bottom:4px;
   }
   .pipeline b{color:var(--text);font-weight:500}
-  .pipeline i{color:var(--amber);font-style:normal;padding:0 6px}
+  .pipeline i{color:var(--teal);font-style:normal;padding:0 8px}
   .project a.repo{
-    display:inline-block;margin-top:20px;
-    font-family:var(--mono);font-size:12px;letter-spacing:.06em;
-    color:var(--amber);text-decoration:none;
-    border:1px solid var(--line);padding:8px 14px;
-    transition:border-color .15s;
+    display:inline-block;margin-top:22px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+    color:var(--teal);text-decoration:none;
+    border:1px solid var(--line);padding:9px 15px;transition:border-color .15s,background .15s;
   }
-  .project a.repo:hover{border-color:var(--amber)}
+  .project a.repo:hover{border-color:var(--teal);background:rgba(79,230,196,.06)}
 
-  /* ---------- now list ---------- */
+  /* ---------- currently ---------- */
   .now{list-style:none}
   .now li{
-    display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);
-    color:var(--muted);
+    display:flex;gap:18px;padding:15px 0;border-bottom:1px solid var(--line);color:var(--muted);
   }
   .now li:first-child{border-top:1px solid var(--line)}
   .now .k{
-    font-family:var(--mono);font-size:11px;color:var(--faint);
-    letter-spacing:.1em;text-transform:uppercase;min-width:90px;padding-top:4px;flex-shrink:0;
+    font-family:var(--mono);font-size:12px;color:var(--faint);
+    min-width:96px;padding-top:3px;flex-shrink:0;
   }
 
   /* ---------- contact ---------- */
   .contact-row{display:flex;gap:12px;flex-wrap:wrap}
   .contact-row a{
-    font-family:var(--mono);font-size:13px;letter-spacing:.04em;
+    font-family:var(--mono);font-size:13px;letter-spacing:.03em;
     color:var(--text);text-decoration:none;
     border:1px solid var(--line);background:var(--panel);
     padding:12px 20px;transition:border-color .15s,color .15s;
   }
-  .contact-row a:hover{border-color:var(--amber);color:var(--amber)}
+  .contact-row a:hover{border-color:var(--teal);color:var(--teal)}
 
   footer{
-    border-top:1px solid var(--line);padding:24px;
+    border-top:1px solid var(--line);padding:26px 24px;
     font-family:var(--mono);font-size:11px;color:var(--faint);
-    letter-spacing:.06em;text-align:center;
+    letter-spacing:.04em;text-align:center;
   }
 
-  /* ---------- reveal ---------- */
-  .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
-  .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none}}
+  /* ---------- single load-in on the hero only ---------- */
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .hero h1{animation:rise .6s ease both}
+  .hero .sub{animation:rise .6s ease .08s both}
+  .hero .plate{animation:rise .6s ease .16s both}
+  @media (prefers-reduced-motion: reduce){.hero h1,.hero .sub,.hero .plate{animation:none}}
 
   @media (max-width:640px){
     .plate{grid-template-columns:1fr 1fr}
     .plate div:nth-child(2){border-right:none}
     .plate div:nth-child(1),.plate div:nth-child(2){border-bottom:1px solid var(--line)}
-    .grid{grid-template-columns:1fr}
-    .bar nav a{margin-left:14px}
+    .focus .row{grid-template-columns:1fr;gap:6px}
+    .bar nav a{margin-left:16px}
   }
 </style>
 </head>
@@ -191,7 +199,7 @@
   <div class="bar">
     <span class="id"><b>DS</b> / itsdansmith.com</span>
     <nav>
-      <a href="#work">Work</a>
+      <a href="#focus">Focus</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -201,76 +209,53 @@
 <main class="wrap">
 
   <div class="hero">
-    <p class="stamp">Software · Critical Infrastructure · UK</p>
-    <h1>Dan<br>Smith<span>.</span></h1>
-    <p class="sub">Software engineering degree apprentice working in the UK nuclear sector. Writing code around systems that were running before I was born — and learning how to secure them.</p>
+    <h1>Dan Smith<span class="caret">_</span></h1>
+    <p class="sub">Software engineering degree apprentice in the UK. <b>Building software and learning security from the ground up.</b></p>
     <dl class="plate">
       <div><dt>Role</dt><dd>Degree apprentice</dd></div>
-      <div><dt>Field</dt><dd>Software eng.</dd></div>
-      <div><dt>Sector</dt><dd>Nuclear / CNI</dd></div>
-      <div><dt>Focus</dt><dd>OT &amp; ICS security</dd></div>
+      <div><dt>Discipline</dt><dd>Software eng.</dd></div>
+      <div><dt>Interest</dt><dd>Security</dd></div>
+      <div><dt>Location</dt><dd>United Kingdom</dd></div>
     </dl>
   </div>
 
-  <section id="work" class="reveal">
-    <p class="label">About</p>
-    <p class="body">I'm on a <strong>Digital Technology Solutions degree apprenticeship</strong> (software engineering pathway), working full-time on a nuclear site while studying. Day to day that means building software in an environment where legacy industrial control systems — the kind most engineers only read about — are part of the landscape.</p>
-    <p class="body">That exposure shaped where I'm heading: <strong>operational technology and ICS security</strong>. Most people learn about critical national infrastructure from a textbook. I walk past it on the way to my desk.</p>
-  </section>
-
-  <section class="reveal">
+  <section id="focus">
     <p class="label">Focus</p>
-    <div class="grid">
-      <div class="cell">
-        <span class="tag">01 / BUILD</span>
+    <div class="focus">
+      <div class="row">
         <h3>Software engineering</h3>
-        <p>Full-time development work as part of the apprenticeship — modern tooling, real codebases, production constraints.</p>
+        <p>Building real software as part of the apprenticeship, with modern tooling and production constraints.</p>
       </div>
-      <div class="cell">
-        <span class="tag">02 / ENVIRONMENT</span>
-        <h3>Legacy OT / ICS</h3>
-        <p>Hands-on proximity to industrial control systems and the realities of running decades-old infrastructure safely.</p>
-      </div>
-      <div class="cell">
-        <span class="tag">03 / SECURE</span>
+      <div class="row">
         <h3>Security fundamentals</h3>
-        <p>Working up from the ground: Linux, networking, and CTF-style problem solving — currently through OverTheWire.</p>
+        <p>Linux, networking and CTF-style problems. Currently working through OverTheWire.</p>
       </div>
-      <div class="cell">
-        <span class="tag">04 / TINKER</span>
-        <h3>Hardware &amp; hobby builds</h3>
-        <p>Raspberry Pi projects and self-hosted experiments. If it has GPIO pins, it's fair game.</p>
+      <div class="row">
+        <h3>Hardware &amp; Pi builds</h3>
+        <p>Raspberry Pi projects and self-hosted experiments.</p>
       </div>
     </div>
   </section>
 
-  <section id="projects" class="reveal">
-    <p class="label">Selected project</p>
+  <section id="projects">
+    <p class="label">Projects</p>
     <div class="project">
-      <div class="head">
-        <h3>Pi Voice Assistant</h3>
-        <span class="status">● In progress</span>
-      </div>
-      <p>A self-hosted voice assistant built on a Raspberry Pi 4, with a Pi Zero 2W acting as a satellite wake-word listener. Local speech in, LLM reasoning, local speech out — plus live web search on demand.</p>
-      <div class="pipeline">
-        <b>OpenWakeWord</b><i>→</i><b>Whisper STT</b><i>→</i><b>Claude API</b><i>→</i><b>Piper TTS</b>&nbsp;&nbsp;<span>[ + Brave Search ]</span>
-      </div>
-      <a class="repo" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">→ View on GitHub</a>
+      <p>For a current list of projects, visit my GitHub.</p>
+      <a class="repo" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">View GitHub profile</a>
     </div>
   </section>
 
-  <section class="reveal">
+  <section id="currently">
     <p class="label">Currently</p>
     <ul class="now">
-      <li><span class="k">Training</span><span>OverTheWire Bandit — no writeups until it's solved.</span></li>
-      <li><span class="k">Reading</span><span>ICS security fundamentals: Modbus, network segmentation, the Purdue model.</span></li>
-      <li><span class="k">Building</span><span>Tool use / function calling for the Pi assistant, so it decides when to search the web itself.</span></li>
+      <li><span class="k">Training</span><span>OverTheWire Bandit.</span></li>
+      <li><span class="k">Reading</span><span>Security fundamentals: Modbus, network segmentation, the Purdue model.</span></li>
+      <li><span class="k">Building</span><span>Tool use for the Pi assistant, so it decides when to search the web itself.</span></li>
     </ul>
   </section>
 
-  <section id="contact" class="reveal">
+  <section id="contact">
     <p class="label">Contact</p>
-    <p class="body" style="margin-bottom:24px">Open to conversations about software, OT security, or apprenticeships.</p>
     <div class="contact-row">
       <a href="mailto:hello@itsdansmith.com">hello@itsdansmith.com</a>
       <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">GitHub</a>
@@ -279,16 +264,7 @@
 
 </main>
 
-<footer>
-  DAN SMITH — MMXXVI · BUILT BY HAND, ONE FILE, NO FRAMEWORK
-</footer>
-
-<script>
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+<footer>© 2026 Dan Smith</footer>
 
 </body>
 </html>
